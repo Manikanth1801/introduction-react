@@ -1,5 +1,8 @@
-import { FC, useState } from 'react'
+import { FC, useContext, useState } from 'react'
 import UserDetail from '../userDetail/UserDetail';
+import { GlobalContext } from '../../context/GlobalProvider';
+import { CounterContext, CounterContextType } from '../../context/CounterContext';
+
 
 interface User{
     name: string;
@@ -12,18 +15,20 @@ const StateExample:FC = () => {
         padding: '10px',
         textAlign: 'center'
     }
+    // const {count, setCount} = useContext(GlobalContext)
+    const counterContext = useContext(CounterContext) as CounterContextType;
+    const {count, increment} = counterContext
     const [name, setName] = useState('Guest')
-    const [count, setCount] = useState(0)
     const [numbers, setNumbers] = useState<number[]>([0])
     const [user, setUser] = useState<User>({
         name: 'John Doe',
         age: 25
     })
-    const handleClick = () => {
-        setCount(prevState=>count+1)
-        setName('Vaibhav')
-        addNumber(count)
-    }
+    // const handleClick = () => {
+    //     setCount(prevState=>count+1)
+    //     setName('Vaibhav')
+    //     addNumber(count)
+    // }
     const addNumber = (num:number) => {
         return setNumbers([...numbers, num])
     }
@@ -42,15 +47,15 @@ const StateExample:FC = () => {
         <article>
             {name}
         </article>
-        <button onClick={handleClick}>
+        <button onClick={increment}>
             Change Name
         </button>
         <article>
             The Button has been clicked {count} times
         </article>
-        <h3>
+        {/* <h3>
             Our array Value is {numbers}
-        </h3>
+        </h3> */}
     </div>
     <div className="user_detail">
         <UserDetail user={user} />

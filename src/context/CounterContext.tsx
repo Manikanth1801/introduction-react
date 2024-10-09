@@ -3,7 +3,7 @@
 import React, { createContext, useState, ReactNode } from 'react';
 
 // Define the shape of the context data
-interface CounterContextType {
+export interface CounterContextType {
   count: number;          // The current count value
   increment: () => void;  // Function to increment the count
 }
