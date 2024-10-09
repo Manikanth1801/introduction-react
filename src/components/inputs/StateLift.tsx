@@ -9,19 +9,19 @@ const StateLift:FC = () => {
 
     return (
       <div>
-        <ChildComponent1 value={sharedValue} onValueChange={handleValueChange} />
+        <ChildComponent1 value={sharedValue} handleValueChange={handleValueChange} />
         <ChildComponent2 value={sharedValue} />
       </div>
     );
   };
 
-  const ChildComponent1:FC<any> = ({ value, onValueChange }) => {
+  const ChildComponent1:FC<any> = ({ value, handleValueChange }) => {
     return (
       <div>
         <input
           type="text"
           value={value}
-          onChange={(e) => onValueChange(e.target.value)}
+          onChange={(e) => handleValueChange(e.target.value)}
         />
       </div>
     );

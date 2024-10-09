@@ -1,51 +1,24 @@
 import React, { useState } from 'react';
 import TemperatureInput from './components/tempratre/TemperatureInput';
 import { CounterProvider } from './context/CounterContext';
-import { CounterDisplay } from './components/counter/CounterDisplay';
 import Parent from './components/duplicate/Parent';
 import StateExample from './components/stateExample/StateExample';
 import FirstInput from './components/inputs/FirstInput';
 import StateLift from './components/inputs/StateLift';
+import { Route, Routes } from 'react-router-dom';
+import Home from './pages/home/Home';
+import OldExamples from './pages/oldExamples/OldExamples';
 
 const App: React.FC = () => {
   const [temperature, setTemperature] = useState('');
 
   return (
     <div>
-      {/* <TemperatureInput
-        scale="C"
-        temperature={temperature}
-        onTemperatureChange={setTemperature}
-      />
-      <TemperatureInput
-        scale="F"
-        temperature={((parseFloat(temperature) * 9) / 5 + 32).toString()}
-        onTemperatureChange={(temp) =>
-          setTemperature(((parseFloat(temp) - 32) * 5) / 9 + '')
-        }
-      />
-      <Parent />
-      <div className="context">
-        <CounterProvider>
-          <CounterDisplay />
-        </CounterProvider>
-      </div> */}
-      <div className="">
-      {/* <TemperatureInput
-        scale="F"
-        temperature={((parseFloat(temperature) * 9) / 5 + 32).toString()}
-        onTemperatureChange={(temp) =>
-          setTemperature(((parseFloat(temp) - 32) * 5) / 9 + '')
-        }
-      /> */}
-      </div>
-      <>
-      {/* <StateExample /> */}
-      {/* <FirstInput /> */}
-      </>
-      <div>
-        <StateLift />
-      </div>
+      <Routes>
+        <Route path='/home' element = {<Home />} />
+        <Route path='/example' element = {<OldExamples/>} />
+      </Routes>
+      
     </div>
   );
 };
